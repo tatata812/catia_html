@@ -12,8 +12,14 @@ $(function () {
 
   $(".header-sp__nav-link").click(function () {
     //ナビゲーションのリンクがクリックされたら
-    $("header__open-btn").removeClass("active"); //ボタンの activeクラスを除去し
+    $(".header__open-btn").removeClass("active"); //ボタンの activeクラスを除去し
   });
+
+  $(".header-sp__nav-link").click(function () {
+    //ナビゲーションのリンクがクリックされたら
+    $(".header-sp").removeClass("open-menu"); //ボタンの activeクラスを除去し
+  });
+
 
   $(".top-to-js").click(function () {
     $("body,html").animate({
@@ -44,13 +50,14 @@ $(function () {
     ]
   });
 
-
- 
+  // ページ内リンクヘッダーの高さ
+  var headerHeight = 60; // ヘッダーの高さ
+  $('a[href^="#"]').click(function(){
+      var speed = 500;
+      var href= $(this).attr("href");
+      var target = $(href == "#" || href == "" ? 'html' : href);
+      var position = target.offset().top - headerHeight;
+      $("html, body").animate({scrollTop:position}, speed, "swing");
+      return false;
+  });
 })
-
-// パララックス
-
-var image = document.getElementsByClassName('sub-top-js');
-new simpleParallax(image, {
-	scale: 1.2,
-});
