@@ -1,0 +1,56 @@
+$(function () {
+
+  $(".header__open-btn").click(function () {
+    $(this).toggleClass("active"); //ボタン自身に activeクラスを付与し
+    $(".header-sp").toggleClass("open-menu"); //ナビゲーションにクラスを付与
+  });
+
+  $(".header-sp").click(function () {
+    $(".header__open-btn").toggleClass("active"); //ボタン自身に activeクラスを付与し
+    $(".header-sp").toggleClass("open-menu"); //ナビゲーションにクラスを付与
+  });
+
+  $(".header-sp__nav-link").click(function () {
+    //ナビゲーションのリンクがクリックされたら
+    $("header__open-btn").removeClass("active"); //ボタンの activeクラスを除去し
+  });
+
+  $(".top-to-js").click(function () {
+    $("body,html").animate({
+        scrollTop: 0 //ページトップまでスクロール
+      },
+      500
+    ); //ページトップスクロールの速さ。
+    return false; //親要素へのイベント伝播を止める
+  });
+
+  $('.top-style-js').slick({
+    autoplay: true, // 自動でスクロール
+    autoplaySpeed: 0, // 自動再生のスライド切り替えまでの時間を設定
+    speed: 5000, // スライドが流れる速度を設定
+    cssEase: "linear", // スライドの流れ方を等速に設定
+    slidesToShow: 4, // 表示するスライドの数
+    swipe: false, // 操作による切り替えはさせない
+    arrows: false, // 矢印非表示
+    pauseOnFocus: false, // スライダーをフォーカスした時にスライドを停止させるか
+    pauseOnHover: false, // スライダーにマウスホバーした時にスライドを停止させるか
+    responsive: [
+      {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 3, // 画面幅750px以下でスライド3枚表示
+        }
+      }
+    ]
+  });
+
+
+ 
+})
+
+// パララックス
+
+var image = document.getElementsByClassName('sub-top-js');
+new simpleParallax(image, {
+	scale: 1.2,
+});
